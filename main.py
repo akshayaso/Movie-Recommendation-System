@@ -2,7 +2,7 @@
 
 from all_movies import clean
 from build_graph import build_movie_graph
-from search_algorithms import bfs_recommend, dfs_cluster
+from search_algorithms import bfs_recommend
 from heap_ranking import top_rated_movies
 
 def main():
@@ -34,13 +34,6 @@ def main():
     for i, movie in enumerate(top_movies, 1):
         rating = movies_df[movies_df["Series_Title"] == movie].iloc[0]["IMDB_Rating"]
         print(f"{i}. {movie} (IMDb Rating: {rating})")
-
-    movie = "Iron Man"
-    recs = bfs_recommend(movie_graph, movie, max_depth=2)
-    print(f"Movies recommended for '{movie}': {recs[:10]}")
-
-    cluster = dfs_cluster(movie_graph, movie)
-    print(f"Movies in the '{movie}' cluster: {cluster[:10]}")
 
 
 if __name__ == "__main__":
